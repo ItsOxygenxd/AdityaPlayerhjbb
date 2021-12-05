@@ -109,7 +109,7 @@ async def play(_, message: Message):
     global que
     global useer
 
-    lel = await message.reply("**🔄 Ƥɤøƈɘssɩɳʛ ...**")
+    lel = await message.reply("**🔎 Sɘɑɤƈɦɩɳʛ ...**")
 
     administrators = await get_administrators(message.chat)
     chid = message.chat.id
@@ -214,10 +214,9 @@ async def play(_, message: Message):
             return await lel.edit(
                 "**🤖 Ɠɩⱱɘ 🙃 Ɱʋsɩƈ 💿 Ɲɑɱɘ 😍\n💞 Ƭø 🔊 Ƥɭɑy 🌷...**"
             )
-        await lel.edit("**🔎 Sɘɑɤƈɦɩɳʛ ...**")
+        await lel.edit("**🔄 Ƥɤøƈɘssɩɳʛ ...**")
         query = message.text.split(None, 1)[1]
         # print(query)
-        await lel.edit("**🔄 Ƥɤøƈɘssɩɳʛ ...**")
         try:
             results = YoutubeSearch(query, max_results=1).to_dict()
             url = f"https://youtube.com{results[0]['url_suffix']}"

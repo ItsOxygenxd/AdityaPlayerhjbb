@@ -114,7 +114,42 @@ async def play(_, message: Message):
     administrators = await get_administrators(message.chat)
     chid = message.chat.id
 
+    try:
+        user = await USER.get_me()
+    except:
+        user.first_name = "Aditya_Player"
+    usar = user
+    wew = usar.id
+    try:
+        await _.get_chat_member(chid, wew)
+    except:
+        for administrator in administrators:
+            if administrator == message.from_user.id:
+                try:
+                    invitelink = await _.export_chat_invite_link(chid)
+                except:
+                    await lel.edit(
+                        "<b>💥 Ʌʈ🤞Fɩrsʈ 🥀 Ɱɑƙɘ ♥️ Ɱɘ ⭐ Ʌɗɱɩŋ 😎 ...</b>")
+                    return
 
+                try:
+                    await USER.join_chat(invitelink)
+                    await USER.send_message(
+                        message.chat.id, "** 😎 I🤞ʌɱ 🥀 Ʀɘɑɗy ♥️ Ƭø ⭐ Ƥɭɑy 😎 ...**")
+
+                except UserAlreadyParticipant:
+                    pass
+                except Exception:
+                    await lel.edit(
+                        f"**🎸 Ƥɭɘɑsɘ ❤️ Ɱɑŋʋɑɭɭy 🥀 Ʌɗɗ 💫 Ʌssɩsʈɑŋʈ 😔 Øɤ 🎸 Ƈøŋʈɑƈʈ ❤️ ʈø : @AdityaHalder 🥀**")
+    try:
+        await USER.get_chat(chid)
+    except:
+        await lel.edit(
+            f"**🎸 Ƥɭɘɑsɘ ❤️ Ɱɑŋʋɑɭɭy 🥀 Ʌɗɗ 💫 Ʌssɩsʈɑŋʈ 😔 Øɤ 🎸 Ƈøŋʈɑƈʈ ❤️ ʈø : @AdityaHalder 🥀**")
+    try:
+        return
+    
     audio = (
         (message.reply_to_message.audio or message.reply_to_message.voice)
         if message.reply_to_message
